@@ -29,6 +29,7 @@ Atualizar a seção **Registro de alterações** sempre que uma nova tarefa for 
 | Por que `--legacy-peer-deps` | `npm install` normal falhou com `Cannot read properties of null (reading 'edgesOut')` no arborist (npm 10.9.7) ao resolver peers do `vitest`. Com a flag, 470 pacotes instalaram OK. |
 | Arquitetura                  | Standalone components, OnPush, SCSS, signals, `@if`/`@for`, sem bibliotecas de ícones externas (SVG inline próprio).                                                                 |
 | Backend                      | Nenhum. Contato apenas por WhatsApp/e-mail.                                                                                                                                          |
+| Auditoria                    | `overrides` forçam `glob@14.0.6` e `minimatch@11.0.9`; `npm audit` reporta 0 vulnerabilidades.                                                                                       |
 
 ---
 
@@ -131,6 +132,7 @@ Nada de biografia inventada, clientes, depoimentos, números de projetos, anos d
 | `CI=true npm test -- --watch=false` (no PowerShell: `$env:CI='true'; npm test -- --watch=false`) | 2 testes passaram (criação do App + H1 do hero).                                                             |
 | `npx ng serve --port 4300 --host 127.0.0.1`                                                      | HTTP 200 e `<app-root>` presente. Servidor encerrado após o teste; porta 4300 livre.                         |
 | Assets no build                                                                                  | `assets/images/logo-heitor-camargo-dini.png` e `assets/images/blueprint-lines.svg` presentes no `dist`.      |
+| `npm audit`                                                                                      | 0 vulnerabilidades após `overrides` de `glob`/`minimatch`.                                                   |
 
 ### Correções feitas durante o desenvolvimento
 
@@ -139,6 +141,7 @@ Nada de biografia inventada, clientes, depoimentos, números de projetos, anos d
 3. `hero.scss` (5,5 kB) estourava o limite de aviso de 4 kB → orçamento `anyComponentStyle` ajustado para 8 kB warning / 16 kB error; build limpo.
 4. Instalação npm com falha de peer resolution resolvida com `--legacy-peer-deps`.
 5. Etiquetas do hero (`visual__tag`): estavam em `right: -5%` / `left: -6%` e eram cortadas pelo `overflow: hidden` da moldura; reposicionadas para `1rem` dentro, com `max-width` e respiro à direita.
+6. Dependabot apontou 16 vulnerabilidades moderadas na cadeia `@angular/cli → pacote → glob/minimatch`. O `npm audit fix --force` sugeria downgrade para Angular 17 (breaking); resolvido com `overrides` para `glob@14.0.6` e `minimatch@11.0.9` e step `npm audit --audit-level=moderate` no workflow.
 
 ---
 
@@ -190,3 +193,4 @@ No GitHub: **Settings → Pages → Build and deployment → Source: GitHub Acti
 | 24/11/2026 | Commit e push para `origin/main`                                                          | Concluído                                 |
 | 24/11/2026 | Diagnóstico do erro 404 no `actions/deploy-pages@v4`: Pages desabilitado no repositório   | Concluído (aguardando ativação no GitHub) |
 | 24/11/2026 | Correção visual: etiqueta "Regularização imobiliária" cortada no hero                     | Concluído                                 |
+| 24/11/2026 | Correção das vulnerabilidades do Dependabot via `overrides` + audit no CI                 | Concluído                                 |
