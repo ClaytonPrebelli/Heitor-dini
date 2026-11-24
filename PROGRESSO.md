@@ -12,23 +12,23 @@ Atualizar a seção **Registro de alterações** sempre que uma nova tarefa for 
 - Projeto: `C:\Users\Clayton Prebelli\Projetos\heitor-camargo-dini`
 - Briefing origem: `C:\Users\Clayton Prebelli\Downloads\briefing_landing_page_heitor_camargo_dini.md`
 - Logo origem: `C:\Users\Clayton Prebelli\Downloads\Emblema Dourado de Atena em Engrenagem.png`
-- Repositório Git: **não inicializado** (não foi solicitado commit).
+- Repositório Git: inicializado; branch `main`, upstream `origin/main` (`https://github.com/ClaytonPrebelli/Heitor-dini.git`).
 
 ---
 
 ## 2. Ambiente e decisões técnicas
 
-| Item | Valor / decisão |
-| --- | --- |
-| Node | v22.22.2 |
-| npm | 10.9.7 |
-| Angular CLI | 21.2.x (`@angular/cli@21`) |
-| Por que Angular 21 | Angular CLI 22 exige Node `^22.22.3`; o ambiente tem `22.22.2`. Angular 21 é compatível. |
-| Scaffold | `npx @angular/cli@21 new heitor-camargo-dini --style=scss --routing=false --ssr=false --skip-git --defaults --skip-install` |
-| Instalação | `npm install --legacy-peer-deps --no-audit --no-fund` |
+| Item                         | Valor / decisão                                                                                                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Node                         | v22.22.2                                                                                                                                                                             |
+| npm                          | 10.9.7                                                                                                                                                                               |
+| Angular CLI                  | 21.2.x (`@angular/cli@21`)                                                                                                                                                           |
+| Por que Angular 21           | Angular CLI 22 exige Node `^22.22.3`; o ambiente tem `22.22.2`. Angular 21 é compatível.                                                                                             |
+| Scaffold                     | `npx @angular/cli@21 new heitor-camargo-dini --style=scss --routing=false --ssr=false --skip-git --defaults --skip-install`                                                          |
+| Instalação                   | `npm install --legacy-peer-deps --no-audit --no-fund`                                                                                                                                |
 | Por que `--legacy-peer-deps` | `npm install` normal falhou com `Cannot read properties of null (reading 'edgesOut')` no arborist (npm 10.9.7) ao resolver peers do `vitest`. Com a flag, 470 pacotes instalaram OK. |
-| Arquitetura | Standalone components, OnPush, SCSS, signals, `@if`/`@for`, sem bibliotecas de ícones externas (SVG inline próprio). |
-| Backend | Nenhum. Contato apenas por WhatsApp/e-mail. |
+| Arquitetura                  | Standalone components, OnPush, SCSS, signals, `@if`/`@for`, sem bibliotecas de ícones externas (SVG inline próprio).                                                                 |
+| Backend                      | Nenhum. Contato apenas por WhatsApp/e-mail.                                                                                                                                          |
 
 ---
 
@@ -45,6 +45,8 @@ Atualizar a seção **Registro de alterações** sempre que uma nova tarefa for 
 ## 4. Estrutura de código implementada
 
 ```text
+.github/workflows/deploy.yml            # deploy GitHub Pages (GitHub Actions)
+PROGRESSO.md                            # este documento
 src/
   app/
     core/
@@ -123,12 +125,12 @@ Nada de biografia inventada, clientes, depoimentos, números de projetos, anos d
 
 ## 7. Verificações já executadas
 
-| Comando | Resultado |
-| --- | --- |
-| `npm run build` | OK, sem avisos. Initial total: 203,76 kB raw / 52,21 kB transfer. Saída: `dist/heitor-camargo-dini/browser`. |
-| `CI=true npm test -- --watch=false` (no PowerShell: `$env:CI='true'; npm test -- --watch=false`) | 2 testes passaram (criação do App + H1 do hero). |
-| `npx ng serve --port 4300 --host 127.0.0.1` | HTTP 200 e `<app-root>` presente. Servidor encerrado após o teste; porta 4300 livre. |
-| Assets no build | `assets/images/logo-heitor-camargo-dini.png` e `assets/images/blueprint-lines.svg` presentes no `dist`. |
+| Comando                                                                                          | Resultado                                                                                                    |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `npm run build`                                                                                  | OK, sem avisos. Initial total: 203,76 kB raw / 52,21 kB transfer. Saída: `dist/heitor-camargo-dini/browser`. |
+| `CI=true npm test -- --watch=false` (no PowerShell: `$env:CI='true'; npm test -- --watch=false`) | 2 testes passaram (criação do App + H1 do hero).                                                             |
+| `npx ng serve --port 4300 --host 127.0.0.1`                                                      | HTTP 200 e `<app-root>` presente. Servidor encerrado após o teste; porta 4300 livre.                         |
+| Assets no build                                                                                  | `assets/images/logo-heitor-camargo-dini.png` e `assets/images/blueprint-lines.svg` presentes no `dist`.      |
 
 ### Correções feitas durante o desenvolvimento
 
@@ -148,7 +150,13 @@ npm run build                  # produção em dist/heitor-camargo-dini/browser
 $env:CI='true'; npm test -- --watch=false
 ```
 
-Para publicar em host estático, subir o conteúdo de `dist/heitor-camargo-dini/browser` (já contém `index.html`, JS, CSS e assets). Se a aplicação for servida em subpasta, ajustar o `<base href="/">` no `index.html` ou buildar com `--base-href`.
+Para publicar em host estático, subir o conteúdo de `dist/heitor-camargo-dini/browser` (já contém `index.html`, JS, CSS e assets). Se a aplicação for servida em subpasta, buildar com `--base-href=/<subpasta>/`.
+
+### GitHub Pages (GitHub Actions)
+
+Workflow: `.github/workflows/deploy.yml`. Dispara em `push` para `main`/`master` e manualmente (`workflow_dispatch`). Ele instala com `npm ci --legacy-peer-deps`, builda com `--base-href=/<nome-do-repo>/` e publica o artefato via `actions/upload-pages-artifact@v3` + `actions/deploy-pages@v4`.
+
+No GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**. O `base-href` usa automaticamente `github.event.repository.name`; para domínio customizado na raiz, trocar `BASE_HREF` para `/`.
 
 ---
 
@@ -158,19 +166,22 @@ Para publicar em host estático, subir o conteúdo de `dist/heitor-camargo-dini/
 2. **Otimização opcional do logo**: o PNG original tem ~1,8 MB. Converter para WebP com transparência reduziria bastante o peso; manter o PNG como fonte. Não há ferramenta (`magick`, `cwebp`, `ffmpeg`) instalada no ambiente.
 3. **Favicon**: hoje é o PNG do emblema; gerar `.ico`/multi-resolução se desejado.
 4. **Conteúdos a confirmar com o cliente** (já previstos, mas não inventados): biografia aprovada, foto profissional, cidade/região de atendimento, portfólio autorizado, depoimentos reais, redes sociais, modalidades específicas de perícias, horários.
-5. **Deploy**: escolher host estático e configurar base href/domínio para OG absoluto (hoje `og:image` é relativo).
+5. **Deploy**: workflow do GitHub Pages já criado; falta dar push para `main`/`master`, habilitar Pages com source "GitHub Actions" (ou usar `workflow_dispatch`) e, se quiser, trocar `og:image` relativo por URL absoluta.
 
 ---
 
 ## 10. Registro de alterações
 
-| Data | Tarefa | Status |
-| --- | --- | --- |
-| 24/11/2026 | Leitura do briefing e inspeção do ambiente | Concluído |
-| 24/11/2026 | Scaffold Angular 21, instalação de dependências, cópia do logo | Concluído |
-| 24/11/2026 | Design system global, SEO, assets vetoriais | Concluído |
-| 24/11/2026 | Componentes compartilhados (header, footer, float, ícones, cards, título, reveal) | Concluído |
-| 24/11/2026 | Seções da home + conteúdo centralizado em `site-content.ts` | Concluído |
-| 24/11/2026 | Correção de imports, spec e orçamento SCSS | Concluído |
-| 24/11/2026 | Build, testes e smoke test do servidor local | Concluído |
-| 24/11/2026 | Criação deste documento de progresso | Concluído |
+| Data       | Tarefa                                                                                    | Status    |
+| ---------- | ----------------------------------------------------------------------------------------- | --------- |
+| 24/11/2026 | Leitura do briefing e inspeção do ambiente                                                | Concluído |
+| 24/11/2026 | Scaffold Angular 21, instalação de dependências, cópia do logo                            | Concluído |
+| 24/11/2026 | Design system global, SEO, assets vetoriais                                               | Concluído |
+| 24/11/2026 | Componentes compartilhados (header, footer, float, ícones, cards, título, reveal)         | Concluído |
+| 24/11/2026 | Seções da home + conteúdo centralizado em `site-content.ts`                               | Concluído |
+| 24/11/2026 | Correção de imports, spec e orçamento SCSS                                                | Concluído |
+| 24/11/2026 | Build, testes e smoke test do servidor local                                              | Concluído |
+| 24/11/2026 | Criação deste documento de progresso                                                      | Concluído |
+| 24/11/2026 | Workflow `.github/workflows/deploy.yml` para GitHub Pages                                 | Concluído |
+| 24/11/2026 | Validação: build com `--base-href`, `npm ci --legacy-peer-deps` e restore do build padrão | Concluído |
+| 24/11/2026 | Commit e push para `origin/main`                                                          | Concluído |
