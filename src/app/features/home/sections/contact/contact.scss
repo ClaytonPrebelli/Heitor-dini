@@ -1,0 +1,195 @@
+.contact {
+  background: linear-gradient(180deg, #f1f3f5 0%, #f6f7f8 100%);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: stretch;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+
+.contact__channels {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.05rem 1.25rem;
+  background: var(--white);
+  border: 1px solid rgba(16, 36, 58, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.28s var(--ease),
+    box-shadow 0.28s var(--ease),
+    border-color 0.28s var(--ease);
+}
+
+.channel:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 162, 74, 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+.channel__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  flex: none;
+  border-radius: 14px;
+  background: rgba(16, 36, 58, 0.06);
+  color: var(--navy-700);
+  font-size: 1.4rem;
+}
+
+.channel__icon--whatsapp {
+  background: rgba(31, 168, 85, 0.12);
+  color: var(--whatsapp-dark);
+}
+
+.channel__body {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.channel__label {
+  font-family: var(--font-heading);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.channel__body strong {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  overflow-wrap: anywhere;
+}
+
+.channel__hint {
+  font-size: 0.74rem;
+  color: var(--gray);
+}
+
+.channel__arrow {
+  margin-left: auto;
+  flex: none;
+  font-size: 1.05rem;
+  color: var(--gold);
+  transition: transform 0.25s var(--ease);
+}
+
+.channel:hover .channel__arrow {
+  transform: translate(2px, -2px);
+}
+
+.contact__note {
+  padding: 0.5rem 0.35rem 0;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+/* Identity card ------------------------------------------------------------ */
+
+.contact__card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.3rem;
+  padding: 2.25rem 1.5rem;
+  border: 1px solid rgba(228, 200, 121, 0.22);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 162, 74, 0.18), transparent 52%),
+    linear-gradient(160deg, #17395a 0%, #10243a 55%, #0a1929 100%);
+  box-shadow: 0 24px 55px rgba(8, 22, 37, 0.22);
+}
+
+.contact__card::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 5%, transparent 70%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 5%, transparent 70%);
+}
+
+.contact__logo {
+  width: clamp(112px, 14vw, 142px);
+  height: auto;
+  margin-bottom: 0.6rem;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.4));
+}
+
+.contact__name {
+  font-family: var(--font-heading);
+  font-size: 1.16rem;
+  color: var(--white);
+}
+
+.contact__role {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.contact__crea {
+  margin-top: 0.6rem;
+  padding: 0.32rem 0.9rem;
+  border: 1px solid rgba(228, 200, 121, 0.4);
+  border-radius: 999px;
+  background: rgba(228, 200, 121, 0.06);
+  font-family: var(--font-heading);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .channel {
+    gap: 0.85rem;
+    padding: 0.95rem 1rem;
+  }
+
+  .channel__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .channel__arrow {
+    display: none;
+  }
+}

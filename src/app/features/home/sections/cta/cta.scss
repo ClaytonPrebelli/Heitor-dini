@@ -1,0 +1,120 @@
+.cta {
+  background: var(--white);
+}
+
+.cta__panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 4vw, 3.5rem);
+  border: 1px solid rgba(228, 200, 121, 0.22);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 82% 8%, rgba(201, 162, 74, 0.2), transparent 45%),
+    linear-gradient(140deg, #17395a 0%, #10243a 55%, #0a1929 100%);
+  box-shadow: 0 30px 70px rgba(8, 22, 37, 0.26);
+}
+
+.cta__watermark {
+  position: absolute;
+  z-index: -1;
+  right: -48px;
+  bottom: -70px;
+  width: clamp(240px, 30vw, 360px);
+  height: auto;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.9rem;
+  max-width: 620px;
+}
+
+.cta__content h2 {
+  color: var(--white);
+}
+
+.cta__content p {
+  font-size: clamp(0.98rem, 1.2vw, 1.06rem);
+  color: rgba(255, 255, 255, 0.74);
+  max-width: 52ch;
+}
+
+.cta__actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+}
+
+.cta__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: opacity 0.25s var(--ease);
+}
+
+.cta__phone:hover {
+  opacity: 0.85;
+}
+
+.cta__phone-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold-light);
+  font-size: 1.2rem;
+}
+
+.cta__phone-text {
+  display: grid;
+  gap: 0.1rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.cta__phone-text strong {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .cta__panel {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .cta__actions {
+    justify-items: stretch;
+  }
+
+  .cta__actions .btn {
+    width: 100%;
+  }
+
+  .cta__phone {
+    justify-self: start;
+  }
+}

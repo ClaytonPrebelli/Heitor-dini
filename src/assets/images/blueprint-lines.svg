@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560" fill="none" role="presentation">
+  <g stroke="#E4C879" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
+    <circle cx="462" cy="116" r="54" />
+    <circle cx="462" cy="116" r="86" stroke-dasharray="2 7" opacity="0.7" />
+    <path d="M462 14v30M462 188v30M360 116h30M534 116h30" opacity="0.8" />
+
+    <path d="M0 486h560" opacity="0.9" />
+    <path d="M0 500h560" stroke-dasharray="3 8" opacity="0.45" />
+
+    <path d="M64 486V250l66-46 66 46v236" />
+    <path d="M64 250h132" opacity="0.7" />
+    <path d="M80 486V262h116v224" opacity="0.5" />
+    <path d="M88 286h100M88 318h100M88 350h100M88 382h100M88 414h100M88 446h100" opacity="0.45" />
+    <path d="M110 262v224M146 262v224" opacity="0.35" />
+    <path d="M126 486v-46h14v46" opacity="0.8" />
+
+    <path d="M232 486V150h104v336" />
+    <path d="M232 150l52-34 52 34" opacity="0.8" />
+    <path d="M248 486V166h72v320" opacity="0.5" />
+    <path d="M248 190h72M248 222h72M248 254h72M248 286h72M248 318h72M248 350h72M248 382h72M248 414h72M248 446h72" opacity="0.4" />
+    <path d="M272 166v320M300 166v320" opacity="0.3" />
+    <path d="M330 486v-58h6v58" opacity="0.7" />
+
+    <path d="M372 486V330h112v156" />
+    <path d="M372 330l56-38 56 38" opacity="0.8" />
+    <path d="M388 486V346h80v140" opacity="0.5" />
+    <path d="M388 374h80M388 406h80M388 438h80" opacity="0.4" />
+    <path d="M420 346v140" opacity="0.3" />
+    <path d="M448 486v-32h12v32" opacity="0.7" />
+
+    <path d="M64 240h132M232 140h104M372 320h112" opacity="0.35" />
+    <path d="M64 234v12M196 234v12M232 134v12M336 134v12M372 314v12M484 314v12" opacity="0.6" />
+
+    <path d="M540 150v336" opacity="0.6" />
+    <path d="M534 150h12M534 486h12M536 260h8M536 370h8" opacity="0.8" />
+    <path d="M64 516h420" opacity="0.6" />
+    <path d="M64 510v12M484 510v12M220 512v8M360 512v8" opacity="0.8" />
+
+    <path d="M28 150h20M38 140v20M300 60h16M308 52v16" opacity="0.5" />
+  </g>
+</svg>

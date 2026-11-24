@@ -1,0 +1,38 @@
+<section id="formacao" class="formation section">
+  <div class="formation__glow" aria-hidden="true"></div>
+  <div class="formation__grid-bg" aria-hidden="true"></div>
+
+  <div class="container formation__inner">
+    <header class="formation__head" appReveal>
+      <span class="eyebrow eyebrow--light">Formação e especializações</span>
+      <h2>Qualificação técnica para cada frente de atuação</h2>
+      <p>
+        Formação voltada às áreas de atuação do engenheiro, com destaque para segurança contra
+        incêndio, avaliações e perícias de engenharia e segurança do trabalho.
+      </p>
+    </header>
+
+    <ul class="formation__cards">
+      @for (item of education; track item.title) {
+        <li
+          class="formation-card"
+          [class.formation-card--progress]="item.status === 'andamento'"
+          appReveal
+        >
+          <div class="formation-card__top">
+            <span class="formation-card__icon">
+              <app-icon [name]="item.icon" />
+            </span>
+            <span class="formation-card__status">
+              <app-icon [name]="item.status === 'concluida' ? 'check' : 'sparkle'" />
+              {{ item.statusLabel }}
+            </span>
+          </div>
+
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

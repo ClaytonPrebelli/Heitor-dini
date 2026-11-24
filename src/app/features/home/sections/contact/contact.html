@@ -1,0 +1,63 @@
+<section id="contato" class="contact section">
+  <div class="container">
+    <app-section-title
+      appReveal
+      eyebrow="Contato"
+      [title]="section.title"
+      [description]="section.description"
+      align="center"
+    />
+
+    <div class="contact__grid">
+      <div class="contact__channels" appReveal>
+        @for (phone of contact.phones; track phone.international; let index = $index) {
+          <a
+            class="channel"
+            [href]="whatsappHref(phone.international)"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'Abrir conversa no WhatsApp ' + phone.display"
+          >
+            <span class="channel__icon channel__icon--whatsapp">
+              <app-icon name="whatsapp" />
+            </span>
+            <span class="channel__body">
+              <span class="channel__label">WhatsApp {{ index + 1 }}</span>
+              <strong>{{ phone.display }}</strong>
+              <span class="channel__hint">Abrir conversa</span>
+            </span>
+            <app-icon class="channel__arrow" name="arrow-up-right" />
+          </a>
+        }
+
+        <a class="channel" [href]="'mailto:' + contact.email" [attr.aria-label]="'Enviar e-mail para ' + contact.email">
+          <span class="channel__icon">
+            <app-icon name="mail" />
+          </span>
+          <span class="channel__body">
+            <span class="channel__label">E-mail</span>
+            <strong>{{ contact.email }}</strong>
+            <span class="channel__hint">Enviar mensagem</span>
+          </span>
+          <app-icon class="channel__arrow" name="arrow-up-right" />
+        </a>
+
+        <p class="contact__note">{{ section.note }}</p>
+      </div>
+
+      <aside class="contact__card" appReveal>
+        <img
+          class="contact__logo"
+          [src]="brand.logo"
+          [alt]="brand.logoAlt"
+          width="140"
+          height="135"
+          loading="lazy"
+        />
+        <strong class="contact__name">{{ brand.name }}</strong>
+        <span class="contact__role">{{ brand.role }}</span>
+        <span class="contact__crea">{{ brand.crea }}</span>
+      </aside>
+    </div>
+  </div>
+</section>

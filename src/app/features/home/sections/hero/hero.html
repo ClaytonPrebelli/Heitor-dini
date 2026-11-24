@@ -1,0 +1,92 @@
+<section id="inicio" class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow eyebrow--light">{{ hero.eyebrow }}</span>
+
+      <h1 class="hero__title">
+        {{ hero.title }}
+        <span class="hero__accent">{{ hero.titleAccent }}</span>
+      </h1>
+
+      <p class="hero__subtitle">{{ hero.subtitle }}</p>
+
+      <p class="hero__identity">
+        <span>{{ brand.name }}</span>
+        <span class="hero__dot" aria-hidden="true"></span>
+        <span>{{ brand.role }}</span>
+        <span class="hero__dot" aria-hidden="true"></span>
+        <span>{{ brand.creaShort }}</span>
+      </p>
+
+      <div class="hero__actions">
+        <a
+          class="btn btn--gold"
+          [href]="whatsappHref"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-icon name="whatsapp" />
+          {{ hero.primaryCta }}
+        </a>
+        <a class="btn btn--outline" href="#servicos">
+          {{ hero.secondaryCta }}
+          <app-icon name="arrow-right" />
+        </a>
+      </div>
+
+      <ul class="hero__tags">
+        @for (tag of hero.tags; track tag) {
+          <li>
+            <app-icon name="check" />
+            {{ tag }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="hero__visual">
+      <div class="visual">
+        <img
+          class="visual__blueprint"
+          src="assets/images/blueprint-lines.svg"
+          alt=""
+          aria-hidden="true"
+          width="560"
+          height="560"
+        />
+
+        <span class="visual__corner visual__corner--tl" aria-hidden="true"></span>
+        <span class="visual__corner visual__corner--tr" aria-hidden="true"></span>
+        <span class="visual__corner visual__corner--bl" aria-hidden="true"></span>
+        <span class="visual__corner visual__corner--br" aria-hidden="true"></span>
+
+        <div class="visual__sheet">
+          <span class="visual__sheet-eyebrow">Consultoria técnica</span>
+          <img
+            class="visual__logo"
+            [src]="brand.logo"
+            [alt]="brand.logoAlt"
+            width="190"
+            height="183"
+            fetchpriority="high"
+          />
+          <p class="visual__name">{{ brand.name }}</p>
+          <p class="visual__role">{{ brand.role }}</p>
+          <span class="visual__crea">{{ brand.crea }}</span>
+        </div>
+
+        <div class="visual__tag visual__tag--fire">
+          <app-icon name="flame" />
+          Segurança contra incêndio
+        </div>
+        <div class="visual__tag visual__tag--home">
+          <app-icon name="home" />
+          Regularização imobiliária
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

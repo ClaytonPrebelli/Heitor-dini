@@ -1,0 +1,230 @@
+.about {
+  background: var(--white);
+  overflow: hidden;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(2.75rem, 6vw, 5.5rem);
+}
+
+/* Institutional portrait --------------------------------------------------- */
+
+.about__visual {
+  position: relative;
+  padding-bottom: 2.25rem;
+}
+
+.portrait {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.3rem;
+  width: min(100%, 420px);
+  margin-inline: auto;
+  aspect-ratio: 4 / 4.9;
+  padding: 2rem 1.5rem;
+  border-radius: 28px;
+  border: 1px solid rgba(228, 200, 121, 0.24);
+  background:
+    radial-gradient(circle at 50% 8%, rgba(201, 162, 74, 0.16), transparent 55%),
+    linear-gradient(160deg, #17395a 0%, #10243a 55%, #0a1a2b 100%);
+  box-shadow: 0 30px 70px rgba(8, 22, 37, 0.28);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.portrait::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px dashed rgba(228, 200, 121, 0.32);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+}
+
+.portrait::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 58%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(228, 200, 121, 0.16);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+}
+
+.portrait__blueprint {
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  right: -10%;
+  bottom: -16%;
+  width: 120%;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.portrait__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(228, 200, 121, 0.9);
+}
+
+.portrait__logo {
+  width: clamp(150px, 26vw, 205px);
+  height: auto;
+  margin-block: 0.5rem 0.65rem;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.4));
+}
+
+.portrait__name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.portrait__role {
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.64);
+  text-align: center;
+}
+
+.portrait__badge {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: max-content;
+  max-width: 92%;
+  padding: 0.8rem 1.15rem;
+  border-radius: 16px;
+  background: var(--white);
+  border: 1px solid rgba(201, 162, 74, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+.portrait__badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--navy);
+  color: var(--gold-light);
+  font-size: 1.2rem;
+}
+
+.portrait__badge-text {
+  display: grid;
+  gap: 0.05rem;
+}
+
+.portrait__badge-text strong {
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
+  color: var(--navy);
+}
+
+.portrait__badge-text span {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* Content ------------------------------------------------------------------ */
+
+.about__content {
+  display: grid;
+  gap: 1rem;
+  max-width: 620px;
+}
+
+.about__content h2 {
+  margin-top: -0.25rem;
+}
+
+.about__paragraph {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--gray);
+}
+
+.about__focus {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 2px solid var(--gold);
+  background: linear-gradient(90deg, rgba(201, 162, 74, 0.07), transparent 80%);
+  border-radius: 0 12px 12px 0;
+}
+
+.about__focus li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--navy-700);
+}
+
+.about__focus app-icon {
+  font-size: 0.95rem;
+  color: #9a7726;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about__content {
+    order: 2;
+    max-width: none;
+  }
+
+  .portrait {
+    width: min(100%, 360px);
+    aspect-ratio: 4 / 4.4;
+  }
+}
+
+@media (max-width: 560px) {
+  .about__actions .btn {
+    width: 100%;
+  }
+
+  .portrait__badge {
+    width: calc(100% - 2rem);
+    justify-content: center;
+  }
+}

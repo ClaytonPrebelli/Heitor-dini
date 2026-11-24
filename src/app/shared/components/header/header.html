@@ -1,0 +1,87 @@
+<header
+  class="header"
+  [class.header--solid]="scrolled() || menuOpen()"
+  [class.header--menu-open]="menuOpen()"
+>
+  <div class="container header__inner">
+    <a class="brand" href="#inicio" (click)="closeMenu()" [attr.aria-label]="brand.name + ' — início'">
+      <img
+        class="brand__logo"
+        [src]="brand.logo"
+        [alt]="brand.logoAlt"
+        width="48"
+        height="46"
+        decoding="async"
+      />
+      <span class="brand__text">
+        <span class="brand__name">{{ brand.name }}</span>
+        <span class="brand__meta">{{ brand.role }} · {{ brand.creaShort }}</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <ul>
+        @for (link of navLinks; track link.href) {
+          <li>
+            <a [href]="link.href">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <a
+      class="btn btn--gold btn--sm header__cta"
+      [href]="whatsappHref"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <app-icon name="whatsapp" />
+      Fale pelo WhatsApp
+    </a>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="menuOpen() ? 'Fechar menu de navegação' : 'Abrir menu de navegação'"
+      aria-controls="mobile-menu"
+    >
+      <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" [class.mobile-menu--open]="menuOpen()">
+    <div class="container mobile-menu__inner">
+      <nav aria-label="Navegação mobile">
+        <ul>
+          @for (link of navLinks; track link.href) {
+            <li>
+              <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <a
+        class="btn btn--whatsapp btn--block"
+        [href]="whatsappHref"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="closeMenu()"
+      >
+        <app-icon name="whatsapp" />
+        Fale pelo WhatsApp
+      </a>
+
+      <div class="mobile-menu__phones">
+        @for (phone of phones; track phone.international) {
+          <a [href]="'tel:+' + phone.international">
+            <app-icon name="phone" />
+            {{ phone.display }}
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</header>

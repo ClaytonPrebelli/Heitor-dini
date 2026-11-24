@@ -1,0 +1,64 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__brand-link" href="#inicio" [attr.aria-label]="brand.name + ' — início'">
+          <img
+            class="footer__logo"
+            [src]="brand.logo"
+            [alt]="brand.logoAlt"
+            width="56"
+            height="54"
+            loading="lazy"
+          />
+          <span class="footer__brand-text">
+            <strong>{{ brand.name }}</strong>
+            <span>{{ brand.role }}</span>
+            <span class="footer__crea">{{ brand.crea }}</span>
+          </span>
+        </a>
+        <p class="footer__tagline">{{ footer.tagline }}</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegação do rodapé">
+        <h3>Navegação</h3>
+        <ul>
+          @for (link of navLinks; track link.href) {
+            <li>
+              <a [href]="link.href">{{ link.label }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h3>Contato</h3>
+        <ul>
+          @for (phone of contact.phones; track phone.international) {
+            <li>
+              <a
+                [href]="whatsappHref(phone.international)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <app-icon name="whatsapp" />
+                {{ phone.display }}
+              </a>
+            </li>
+          }
+          <li>
+            <a [href]="'mailto:' + contact.email">
+              <app-icon name="mail" />
+              {{ contact.email }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {{ year }} {{ brand.name }}. Todos os direitos reservados.</p>
+      <p>{{ brand.role }} · {{ brand.crea }}</p>
+    </div>
+  </div>
+</footer>

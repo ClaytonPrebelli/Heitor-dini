@@ -1,0 +1,43 @@
+<section class="cta section" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta__panel" appReveal>
+      <img
+        class="cta__watermark"
+        [src]="brand.logo"
+        alt=""
+        aria-hidden="true"
+        width="360"
+        height="347"
+        loading="lazy"
+      />
+
+      <div class="cta__content">
+        <span class="eyebrow eyebrow--light">Fale com o engenheiro</span>
+        <h2 id="cta-title">{{ cta.title }}</h2>
+        <p>{{ cta.text }}</p>
+      </div>
+
+      <div class="cta__actions">
+        <a
+          class="btn btn--gold"
+          [href]="whatsappHref"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-icon name="whatsapp" />
+          {{ cta.button }}
+        </a>
+
+        <a class="cta__phone" [href]="'tel:+' + primaryPhone.international">
+          <span class="cta__phone-icon">
+            <app-icon name="phone" />
+          </span>
+          <span class="cta__phone-text">
+            <span>Prefere ligar?</span>
+            <strong>{{ primaryPhone.display }}</strong>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

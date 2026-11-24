@@ -1,0 +1,351 @@
+/* ==========================================================================
+   Heitor Camargo Dini — Design system
+   ========================================================================== */
+
+:root {
+  --navy-950: #081625;
+  --navy-900: #0c1e31;
+  --navy: #10243a;
+  --navy-700: #173b5e;
+  --navy-600: #1e4a74;
+  --gold: #c9a24a;
+  --gold-light: #e4c879;
+  --gold-soft: rgba(201, 162, 74, 0.12);
+  --graphite: #252b32;
+  --gray: #66717d;
+  --gray-light: #8b949e;
+  --bg: #f6f7f8;
+  --bg-alt: #eef1f4;
+  --white: #ffffff;
+  --wine: #5a1720;
+  --whatsapp: #1fa855;
+  --whatsapp-dark: #168a44;
+
+  --font-heading: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 36, 58, 0.06), 0 4px 14px rgba(16, 36, 58, 0.05);
+  --shadow-md: 0 12px 34px rgba(16, 36, 58, 0.1);
+  --shadow-lg: 0 30px 70px rgba(8, 22, 37, 0.18);
+
+  --container: 1200px;
+  --section-space: clamp(4rem, 8vw, 7rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--graphite);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.15rem, 5vw, 3.65rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+}
+
+h4 {
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(201, 162, 74, 0.32);
+  color: var(--navy);
+}
+
+.container {
+  width: min(100% - clamp(2.5rem, 6vw, 5rem), var(--container));
+  margin-inline: auto;
+}
+
+@media (max-width: 960px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+.section {
+  padding-block: var(--section-space);
+  position: relative;
+}
+
+.section--tight {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.eyebrow--light {
+  color: var(--gold-light);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-200%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.lead {
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  color: var(--gray);
+}
+
+/* Buttons ----------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn app-icon {
+  font-size: 1.15rem;
+}
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy-950);
+  box-shadow: 0 10px 26px rgba(201, 162, 74, 0.32);
+}
+
+.btn--gold:hover {
+  box-shadow: 0 16px 34px rgba(201, 162, 74, 0.42);
+}
+
+.btn--navy {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--navy:hover {
+  background: var(--navy-700);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--whatsapp {
+  background: var(--whatsapp);
+  color: var(--white);
+  box-shadow: 0 10px 24px rgba(31, 168, 85, 0.28);
+}
+
+.btn--whatsapp:hover {
+  background: var(--whatsapp-dark);
+  box-shadow: 0 16px 30px rgba(31, 168, 85, 0.36);
+}
+
+.btn--outline {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+}
+
+.btn--outline:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn--outline-navy {
+  border-color: rgba(16, 36, 58, 0.22);
+  color: var(--navy);
+  background: transparent;
+}
+
+.btn--outline-navy:hover {
+  border-color: var(--gold);
+  color: var(--navy);
+  background: var(--gold-soft);
+}
+
+.btn--sm {
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
+  font-size: 0.85rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Reveal animation -------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

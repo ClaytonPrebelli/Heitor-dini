@@ -1,0 +1,87 @@
+<section id="servicos" class="services section">
+  <div class="container">
+    <app-section-title
+      appReveal
+      eyebrow="Áreas de atuação"
+      title="Soluções técnicas para segurança, regularização e valorização do seu imóvel"
+      description="Serviços de engenharia organizados por área, com orientação técnica em cada etapa do processo."
+      align="center"
+    />
+
+    <div class="services__areas">
+      @for (area of areas; track area.id) {
+        <article
+          class="area"
+          [id]="area.id"
+          [class.area--dark]="area.variant === 'dark'"
+          [style.--area-columns]="area.columns"
+          appReveal
+        >
+          <header class="area__header">
+            <div class="area__heading">
+              <span class="area__icon">
+                <app-icon [name]="area.icon" />
+              </span>
+              <div class="area__heading-text">
+                <span class="area__eyebrow">{{ area.eyebrow }}</span>
+                <h3>{{ area.title }}</h3>
+                <p>{{ area.description }}</p>
+              </div>
+            </div>
+
+            <a
+              class="btn btn--whatsapp btn--sm area__cta"
+              [href]="whatsappHref(area.whatsappMessage)"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <app-icon name="whatsapp" />
+              Falar sobre esta área
+            </a>
+          </header>
+
+          <div class="area__grid">
+            @for (item of area.items; track item.title) {
+              <app-service-card
+                [item]="item"
+                [message]="area.whatsappMessage"
+                [theme]="area.variant"
+              />
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    <aside class="pericias" appReveal>
+      <div class="pericias__content">
+        <span class="eyebrow">{{ pericias.eyebrow }}</span>
+        <h3>{{ pericias.title }}</h3>
+        <p>{{ pericias.description }}</p>
+        <ul class="pericias__points">
+          @for (point of pericias.points; track point) {
+            <li>
+              <app-icon name="check" />
+              {{ point }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="pericias__aside">
+        <span class="pericias__icon">
+          <app-icon name="calculator" />
+        </span>
+        <a
+          class="btn btn--navy"
+          [href]="whatsappHref(pericias.whatsappMessage)"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-icon name="whatsapp" />
+          Falar sobre meu caso
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>

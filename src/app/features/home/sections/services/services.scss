@@ -1,0 +1,256 @@
+.services {
+  background: linear-gradient(180deg, #f6f7f8 0%, #eef1f4 100%);
+}
+
+.services__areas {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 1.85rem);
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+/* Area panel -------------------------------------------------------------- */
+
+.area {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.4rem, 3vw, 2.75rem);
+  border: 1px solid rgba(16, 36, 58, 0.07);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.area--dark {
+  border-color: rgba(228, 200, 121, 0.18);
+  background:
+    radial-gradient(circle at 88% 0%, rgba(201, 162, 74, 0.16), transparent 46%),
+    linear-gradient(155deg, #14304c 0%, #10243a 52%, #0b1c2e 100%);
+  box-shadow: 0 28px 60px rgba(8, 22, 37, 0.26);
+}
+
+.area--dark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(circle at 85% 10%, #000 5%, transparent 65%);
+  mask-image: radial-gradient(circle at 85% 10%, #000 5%, transparent 65%);
+  pointer-events: none;
+}
+
+.area__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.area__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.05rem;
+  max-width: 720px;
+}
+
+.area__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--gold-soft);
+  border: 1px solid rgba(201, 162, 74, 0.22);
+  color: #9a7726;
+  font-size: 1.6rem;
+}
+
+.area--dark .area__icon {
+  background: rgba(228, 200, 121, 0.12);
+  border-color: rgba(228, 200, 121, 0.3);
+  color: var(--gold-light);
+}
+
+.area__heading-text {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.area__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.area--dark .area__eyebrow {
+  color: var(--gold-light);
+}
+
+.area__heading-text h3 {
+  color: var(--navy);
+}
+
+.area--dark .area__heading-text h3 {
+  color: var(--white);
+}
+
+.area__heading-text p {
+  margin-top: 0.35rem;
+  font-size: 0.94rem;
+  color: var(--gray);
+  max-width: 62ch;
+}
+
+.area--dark .area__heading-text p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.area__cta {
+  flex: none;
+}
+
+.area__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--area-columns, 3), minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.4vw, 1rem);
+}
+
+/* Perícias ---------------------------------------------------------------- */
+
+.pericias {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  margin-top: clamp(1.25rem, 2.5vw, 1.85rem);
+  padding: clamp(1.6rem, 3.5vw, 3rem);
+  border: 1px solid rgba(201, 162, 74, 0.3);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #fbf7ec 0%, #f5ecd8 100%);
+}
+
+.pericias::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -6%;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 162, 74, 0.25);
+  pointer-events: none;
+}
+
+.pericias__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pericias__content h3 {
+  color: var(--navy);
+}
+
+.pericias__content p {
+  font-size: 0.96rem;
+  color: var(--graphite);
+  max-width: 62ch;
+}
+
+.pericias__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.5rem;
+  margin-top: 0.4rem;
+}
+
+.pericias__points li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--navy-700);
+}
+
+.pericias__points app-icon {
+  font-size: 0.95rem;
+  color: #9a7726;
+}
+
+.pericias__aside {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+}
+
+.pericias__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid rgba(201, 162, 74, 0.4);
+  box-shadow: 0 12px 26px rgba(154, 119, 38, 0.16);
+  color: #9a7726;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 1100px) {
+  .area__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pericias {
+    grid-template-columns: 1fr;
+  }
+
+  .pericias__aside {
+    justify-items: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .area__heading {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .area__cta {
+    width: 100%;
+  }
+
+  .area__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pericias__aside {
+    justify-items: stretch;
+  }
+
+  .pericias__icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+}
