@@ -138,6 +138,7 @@ Nada de biografia inventada, clientes, depoimentos, números de projetos, anos d
 2. `app.spec.ts` ainda testava o texto padrão do scaffold → atualizado para testar o H1 real.
 3. `hero.scss` (5,5 kB) estourava o limite de aviso de 4 kB → orçamento `anyComponentStyle` ajustado para 8 kB warning / 16 kB error; build limpo.
 4. Instalação npm com falha de peer resolution resolvida com `--legacy-peer-deps`.
+5. Etiquetas do hero (`visual__tag`): estavam em `right: -5%` / `left: -6%` e eram cortadas pelo `overflow: hidden` da moldura; reposicionadas para `1rem` dentro, com `max-width` e respiro à direita.
 
 ---
 
@@ -158,6 +159,8 @@ Workflow: `.github/workflows/deploy.yml`. Dispara em `push` para `main`/`master`
 
 No GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**. O `base-href` usa automaticamente `github.event.repository.name`; para domínio customizado na raiz, trocar `BASE_HREF` para `/`.
 
+**Erro encontrado no primeiro deploy (24/11/2026):** `actions/deploy-pages@v4` falhou com `HttpError: Not Found` ao criar o deployment. A API pública confirmou `has_pages=false`, ou seja, o GitHub Pages ainda não estava habilitado no repositório. Não é erro do workflow. Após habilitar, reexecutar o job (Actions → Deploy to GitHub Pages → Re-run all jobs) ou fazer novo push. URL esperada: `https://claytonprebelli.github.io/Heitor-dini/`.
+
 ---
 
 ## 9. Pendências / próximos passos sugeridos
@@ -166,22 +169,24 @@ No GitHub: **Settings → Pages → Build and deployment → Source: GitHub Acti
 2. **Otimização opcional do logo**: o PNG original tem ~1,8 MB. Converter para WebP com transparência reduziria bastante o peso; manter o PNG como fonte. Não há ferramenta (`magick`, `cwebp`, `ffmpeg`) instalada no ambiente.
 3. **Favicon**: hoje é o PNG do emblema; gerar `.ico`/multi-resolução se desejado.
 4. **Conteúdos a confirmar com o cliente** (já previstos, mas não inventados): biografia aprovada, foto profissional, cidade/região de atendimento, portfólio autorizado, depoimentos reais, redes sociais, modalidades específicas de perícias, horários.
-5. **Deploy**: workflow do GitHub Pages já criado; falta dar push para `main`/`master`, habilitar Pages com source "GitHub Actions" (ou usar `workflow_dispatch`) e, se quiser, trocar `og:image` relativo por URL absoluta.
+5. **Deploy**: workflow e push prontos; bloqueio atual: habilitar GitHub Pages em **Settings → Pages → Source: GitHub Actions** (API reporta `has_pages=false`), depois reexecutar o job. Opcional: trocar `og:image` relativo por URL absoluta.
 
 ---
 
 ## 10. Registro de alterações
 
-| Data       | Tarefa                                                                                    | Status    |
-| ---------- | ----------------------------------------------------------------------------------------- | --------- |
-| 24/11/2026 | Leitura do briefing e inspeção do ambiente                                                | Concluído |
-| 24/11/2026 | Scaffold Angular 21, instalação de dependências, cópia do logo                            | Concluído |
-| 24/11/2026 | Design system global, SEO, assets vetoriais                                               | Concluído |
-| 24/11/2026 | Componentes compartilhados (header, footer, float, ícones, cards, título, reveal)         | Concluído |
-| 24/11/2026 | Seções da home + conteúdo centralizado em `site-content.ts`                               | Concluído |
-| 24/11/2026 | Correção de imports, spec e orçamento SCSS                                                | Concluído |
-| 24/11/2026 | Build, testes e smoke test do servidor local                                              | Concluído |
-| 24/11/2026 | Criação deste documento de progresso                                                      | Concluído |
-| 24/11/2026 | Workflow `.github/workflows/deploy.yml` para GitHub Pages                                 | Concluído |
-| 24/11/2026 | Validação: build com `--base-href`, `npm ci --legacy-peer-deps` e restore do build padrão | Concluído |
-| 24/11/2026 | Commit e push para `origin/main`                                                          | Concluído |
+| Data       | Tarefa                                                                                    | Status                                    |
+| ---------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- |
+| 24/11/2026 | Leitura do briefing e inspeção do ambiente                                                | Concluído                                 |
+| 24/11/2026 | Scaffold Angular 21, instalação de dependências, cópia do logo                            | Concluído                                 |
+| 24/11/2026 | Design system global, SEO, assets vetoriais                                               | Concluído                                 |
+| 24/11/2026 | Componentes compartilhados (header, footer, float, ícones, cards, título, reveal)         | Concluído                                 |
+| 24/11/2026 | Seções da home + conteúdo centralizado em `site-content.ts`                               | Concluído                                 |
+| 24/11/2026 | Correção de imports, spec e orçamento SCSS                                                | Concluído                                 |
+| 24/11/2026 | Build, testes e smoke test do servidor local                                              | Concluído                                 |
+| 24/11/2026 | Criação deste documento de progresso                                                      | Concluído                                 |
+| 24/11/2026 | Workflow `.github/workflows/deploy.yml` para GitHub Pages                                 | Concluído                                 |
+| 24/11/2026 | Validação: build com `--base-href`, `npm ci --legacy-peer-deps` e restore do build padrão | Concluído                                 |
+| 24/11/2026 | Commit e push para `origin/main`                                                          | Concluído                                 |
+| 24/11/2026 | Diagnóstico do erro 404 no `actions/deploy-pages@v4`: Pages desabilitado no repositório   | Concluído (aguardando ativação no GitHub) |
+| 24/11/2026 | Correção visual: etiqueta "Regularização imobiliária" cortada no hero                     | Concluído                                 |
